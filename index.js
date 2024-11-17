@@ -23,6 +23,6 @@ export const creatingCollectionForAccount = {
   transactionCode: transactionPath,
   transactionExplanation: transactionExplanationPath,
   filters: {
-    difficulty: "beginner"
-  }
+    difficulty: "beginner",
+  },
 };
