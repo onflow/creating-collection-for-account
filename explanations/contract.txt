@@ -1,3 +1,6 @@
-This is a function you would include in your smart contract to create collections for accounts without them.
+The createEmptyCollection function is part of the ExampleNFT contract and is used to create a new, empty collection for an account. A collection is a resource that allows users to store and manage their non-fungible tokens (NFTs) by bundling them together.
 
-A collection resource is returned which you then save into your account with a transaction.
+When invoked, the createEmptyCollection function creates a new instance of the Collection resource. This resource is initialized with an empty set of NFTs. The collection resource adheres to the CollectionInterface, which defines methods for depositing NFTs, withdrawing NFTs by their ID, and viewing the list of owned NFT IDs.
+
+Once the collection is created, it is returned as a resource, which can then be stored in the account's private storage using a transaction. This enables the account to manage NFTs directly. Additionally, the function creates a public capability for the collection, which grants others access to the functionality provided by the collection (e.g., depositing and withdrawing NFTs) through the CollectionPublic interface.
+

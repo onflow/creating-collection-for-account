@@ -1,3 +1,3 @@
-This transaction is showing us how we would create a new empty collection and save that resource into a users account.
+This transaction demonstrates how to create a new empty collection for an account and save it as a resource in the user's storage. Initially, the transaction checks if the account already has a collection. If one doesn't exist, it proceeds to create a new ExampleNFT.Collection and stores it in the account’s storage under a specified path.
 
-We then create a public capability to this resource by linking the interface that contains functions the public can use on this resource for this account.
+After saving the collection, the transaction creates a public capability for the collection. This capability allows others to interact with the collection by providing access to specific functions defined in the NonFungibleToken.CollectionPublic interface, such as viewing or transferring NFTs. The capability is then published to a public path, making it accessible to others who wish to interact with the collection.
