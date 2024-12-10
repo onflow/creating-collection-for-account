@@ -8,8 +8,11 @@ import "MetadataViews"
 transaction {
 
     prepare(signer: auth(Storage, Capabilities) &Account) {
-        // Return early if the account already has a collection
-        if signer.capabilities.storage.borrow<&ExampleNFT.Collection>(from: ExampleNFT.CollectionStoragePath) != nil {
+        // Check if the account already has a collection
+        let collectionRef = signer.storage.borrow<&ExampleNFT.Collection>(from: ExampleNFT.CollectionStoragePath)
+        
+        // If a collection already exists, return early
+        if collectionRef != nil {
             return
         }
 
@@ -20,7 +23,7 @@ transaction {
         signer.storage.save(<-collection, to: ExampleNFT.CollectionStoragePath)
 
         // Create a capability for the collection
-        let collectionCap = signer.capabilities.storage.issue<&{NonFungibleToken.CollectionPublic, MetadataViews.ResolverCollection}>(
+        let collectionCap = signer.capabilities.storage.issue<&{NonFungibleToken.CollectionPublic}>(
             ExampleNFT.CollectionStoragePath
         )
         
